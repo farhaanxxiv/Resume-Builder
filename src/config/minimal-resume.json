@@ -1,0 +1,106 @@
+{
+    "summary": {
+        "multiple": false,
+        "fields": [
+            {
+                "id": "summary_text",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Summary"
+            }
+        ]
+    },
+    "education": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "education_college",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter College Name"
+            },
+            {
+                "id": "education_major",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Major (CSE,MBA)"
+            },
+            {
+                "id": "education_from",
+                "type": "text",
+                "data": "",
+                "placeholder": "From"
+            },
+            {
+                "id": "education_to",
+                "type": "text",
+                "data": "",
+                "placeholder": "To"
+            },
+            {
+                "id": "education_cgpa",
+                "type": "text",
+                "data": "",
+                "placeholder": "CGPA"
+            },
+            {
+                "id": "education_sgpa",
+                "type": "text",
+                "data": "",
+                "placeholder": "SGPA"
+            },
+            {
+                "id": "education_percentage",
+                "type": "text",
+                "data": "",
+                "placeholder": "Percentage (100%)"
+            },
+            {
+                "id": "education_bullets",
+                "type": "text",
+                "data": [],
+                "placeholder": "Additional Info In Bullets"
+            }
+        ]
+    },
+    "projects": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "project_title",
+                "type": "text",
+                "data": "",
+                "placeholder": "Project Title"
+            },
+            {
+                "id": "project_link",
+                "type": "text",
+                "data": "",
+                "placeholder": "Project Link"
+            },
+            {
+                "id": "project_designation",
+                "type": "text",
+                "data": "",
+                "placeholder": "Project Designation"
+            },
+            {
+                "id": "project_bullets",
+                "type": "text",
+                "data": "",
+                "placeholder": "Info About Project"
+            }
+        ]
+    },
+    "languages": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
+            }
+        ]
+    }
+}
