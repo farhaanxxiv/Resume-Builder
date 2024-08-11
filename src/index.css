@@ -2,20 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@layer base {
 
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @media print {
-  .a4-paper {
-    width: 210mm;
-    height: 297mm;
-    margin: 0;
-    box-shadow: none;
+
+  .header,
+  .footer,
+  #non-printable {
+    display: none !important;
+  }
+
+  #printable {
+    display: block;
   }
 
   @page {
-    size: A4;
-    margin: 0;
+    margin: 1em !important;
   }
 }
 
@@ -26,7 +38,6 @@
   max-height: 297mm;
   aspect-ratio: 1 / 1.414;
   background-color: white;
-  padding: 10mm;
   box-sizing: border-box;
 
   /* Scale the font size relative to the width of the container */
@@ -47,7 +58,8 @@ body {
 }
 
 * {
-  font-family: 'Poppins', sans-serif;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: "IBM Plex Sans", sans-serif;
   color: white;
 }
 
@@ -64,12 +76,19 @@ section {
 button {
   background-color: black;
   color: white;
-  border: 1px solid white;
+  border: 1px solid rgb(77, 77, 77);
   padding: 10px;
-  box-shadow: 3px 3px white;
   transition: 0.2s;
   display: block;
   width: fit-content;
+  border-radius: 5px;
+  width: 100%;
+}
+
+button.white {
+  background-color: rgb(238, 238, 238);
+  color: black;
+  border: 1px solid rgb(195, 195, 195);
 }
 
 button:hover {
@@ -82,8 +101,9 @@ a {
 }
 
 input {
+  width: 100%;
   background-color: black;
-  border: 1px solid white;
-  padding: 2px 10px;
+  border: 1px solid rgb(88, 88, 88);
+  padding: 5px 10px;
   border-radius: 4px;
 }

@@ -9,11 +9,12 @@ import { useEffect, useState } from "react";
 import DocxViewer from "../components/Resume/ViewDoc";
 import generateResume from "../resumes/minimal";
 import MinimalResume from "./SampleResumes/MinimalResume";
+import ReactQuill from "react-quill";
+import 'react-quill/dist/quill.snow.css'; // import styles
 
 export default function Builder() {
 
     const { resumeData, setResumeData, totalSections, incrementSection, decrementSection } = useResume()
-    const [resumeBlob, setResumeBlob] = useState('')
     const resumeKeys = Object.keys(resumeFormat);
 
     function downloadResume() {
@@ -27,11 +28,6 @@ export default function Builder() {
         });
     }
 
-    // useEffect(() => {
-    //     Packer.toBlob(doc).then(blob => {
-    //         setResumeBlob(blob)
-    //     });
-    // }, [resumeData])
 
     function addSection(section) {
         // Create a deep copy of the section schema to avoid modifying the original
@@ -89,27 +85,59 @@ export default function Builder() {
         });
     };
 
+
     const renderFields = (fields, sectionKey, sectionIndex) => {
-        return fields.map(field => (
-            <div key={field.id}>
-                <input
-                    type={field.type}
-                    placeholder={field.placeholder}
-                    value={field.data}
-                    onChange={(e) =>
-                        handleInputChange(sectionKey, sectionIndex, field.id, e.target.value)
-                    }
-                />
+        return (
+            <div className={`space-y-2 `}>
+                {
+                    fields.map(field => (
+                        field.type === 'custom' ? (
+                            <div key={field.id}>
+                                <ReactQuill
+                                    value={field.data}
+                                    modules={{
+                                        toolbar: [
+                                                ['bold', 'italic', 'underline'],
+                                            [{ list: 'ordered' }, { list: 'bullet' }],
+                                            [{ align: [] }], // Alignment options
+                                            [{ indent: '-1' }, { indent: '+1' }],
+                                            ['clean'] // Clear formatting button
+                                        ]
+                                    }}
+                                    onChange={(value) =>
+                                        handleInputChange(sectionKey, sectionIndex, field.id, value)
+                                    }
+                                    theme="snow"
+                                />
+
+                            </div>
+                        ) : (
+                            <div key={field.id}>
+                                <input
+                                    type={field.type}
+                                    placeholder={field.placeholder}
+                                    value={field.data}
+                                    onChange={(e) =>
+                                        handleInputChange(sectionKey, sectionIndex, field.id, e.target.value)
+                                    }
+                                />
+                            </div>
+                        )
+                    ))
+                }
             </div>
-        ));
+        )
+
     };
 
     const renderSections = (sectionKey, sections) => {
         return sections.map((section, index) => (
             <div key={section.id}>
-                {renderFields(section.fields, sectionKey, index)}
-                <button onClick={() => handleDeleteSection(sectionKey, index)}>Delete</button>
-
+                <div>
+                    <p className="text-xs">{sectionKey} #{index + 1}</p>
+                    {renderFields(section.fields, sectionKey, index)}
+                    <button className="white py-1 my-2 w-fit px-6" onClick={() => handleDeleteSection(sectionKey, index)}>Delete</button>
+                </div>
             </div>
         ));
     };
@@ -128,14 +156,21 @@ export default function Builder() {
     };
 
     const renderForm = () => {
-        return Object.keys(resumeData).map(sectionKey => (
-            resumeData[sectionKey].sections != 0 &&
+        return (
+            <div className="space-y-12 px-4">
+                {Object.keys(resumeData).map(sectionKey => (
+                    resumeData[sectionKey].sections != 0 &&
+                    <div>
+                        <h2 className="text-2xl font-semibold">{sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)}</h2>
 
-            <div key={sectionKey}>
-                <h2>{sectionKey.charAt(0).toUpperCase() + sectionKey.slice(1)}</h2>
-                {renderSections(sectionKey, resumeData[sectionKey].sections)}
+                        <div className={`${sectionKey == 'skills' ? 'grid grid-cols-2 gap-4 ' :'space-y-6'} `} key={sectionKey}>
+                            {renderSections(sectionKey, resumeData[sectionKey].sections)}
+                        </div>
+                    </div>
+                ))
+                }
             </div>
-        ));
+        )
     };
     return (
         <section>
@@ -143,20 +178,13 @@ export default function Builder() {
                 <div className="border-r border-white pr-4">
                     <button onClick={() => downloadResume()}>Download Resume</button>
 
-                    <div className="flex flex-col gap-4 mt-4">
-                        <input type="text" placeholder="Name" />
-                        <input type="text" placeholder="Mobile" />
-                        <input type="text" placeholder="Email" />
-                        <input type="text" placeholder="Location" />
-                        <input type="text" placeholder="GitHub" />
-                    </div>
-
                     <h1 className="text-3xl font-semibold mt-6 mb-3">Sections :</h1>
                     <div className="flex flex-col gap-4">
                         {
                             resumeKeys.map((section) => {
                                 return (
-                                    <button className="" onClick={() => { addSection(section) }}>{section}</button>
+
+                                    <button className="text-left" onClick={() => { addSection(section) }}> <div className="flex justify-between"> <p> {section}</p><p>+</p></div>  </button>
                                 )
                             })
 
@@ -168,6 +196,7 @@ export default function Builder() {
                 </div>
                 <div>
                     <MinimalResume />
+
                 </div>
             </div>
         </section>

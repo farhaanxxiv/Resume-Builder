@@ -1,10 +1,14 @@
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import generatePDF, { usePDF } from "react-to-pdf";
 import { useReactToPrint } from "react-to-print";
 import { useResume } from "../../context/ResumeContext";
 import { CiLink } from "react-icons/ci";
+import ResumeUtils from "../../utils/ResumeUtils";
+import '../../styles/quillStyles.css'
+
 
 export default function MinimalResume() {
+
 
     const ref = useRef(null)
     const { resumeData } = useResume()
@@ -41,12 +45,11 @@ export default function MinimalResume() {
             <div>
                 <h2 className="text-center text-3xl mb-1">{profileName}</h2>
                 <div className="flex gap-x-2 justify-center flex-wrap">
-                    {profileGithub && <p>{profileGithub}</p>}
+                    {profileGithub && <a href={profileGithub} target="_blank">GitHub</a>}
                     {profileMobile && <p>{profileMobile}</p>}
                     {profileLocation && <p>{profileLocation}</p>}
-                    {profileEmail && <p>{profileEmail}</p>}
-                    {profileLinkedin && <p>{profileLinkedin}</p>}
-
+                    {profileEmail && <a href={`mailto:${profileEmail}`}>{profileEmail}</a>}
+                    {profileLinkedin && <a href={profileLinkedin} target="_blank">LinkedIn</a>}
                 </div>
             </div>
         )
@@ -80,6 +83,10 @@ export default function MinimalResume() {
 
                     const educationPercentageField = section.fields.find(field => field.id === 'education_percentage');
                     const educationPercentage = educationPercentageField ? educationPercentageField.data : null; // Default value if field is not found
+
+                    const educationBulletsField = section.fields.find(field => field.id === 'education_bullets');
+                    const educationBullets = educationBulletsField ? educationBulletsField.data : null; // Default value if field is not found
+
                     return (
                         <>
                             <div className="flex gap-x-2">
@@ -92,6 +99,13 @@ export default function MinimalResume() {
                                 <p className=""> <b>SGPA</b> : {educationSGPA}</p>
                                 <p className=""> <b>Percentage</b> : {educationPercentage}</p>
                             </div>
+
+
+                            {educationBullets && (
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: educationBullets }}
+                                />
+                            )}
 
                         </>
                     )
@@ -113,7 +127,7 @@ export default function MinimalResume() {
                     const projectTitle = projectTitleField ? projectTitleField.data : null; // Default value if field is not found
 
                     const projectLinkField = section.fields.find(field => field.id === 'project_link');
-                    const projectLink = projectLinkField ? projectLinkField.data : null; // Default value if field is not found
+                    const projectLink = (projectLinkField || projectLinkField.data != '') ? projectLinkField.data : null; // Default value if field is not found
 
                     const projectDesignationField = section.fields.find(field => field.id === 'project_designation');
                     const projectDesignation = projectDesignationField ? projectDesignationField.data : null; // Default value if field is not found
@@ -133,8 +147,12 @@ export default function MinimalResume() {
                                 }
                             </div>
 
-                            <p className="italic font-light">{projectBullets}</p>
 
+                            {projectBullets && (
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: projectBullets }}
+                                />
+                            )}
                         </>
                     )
 
@@ -239,11 +257,12 @@ export default function MinimalResume() {
                                 <p className="italic font-light">({experienceFrom} - {experienceTo})</p>
                             </div>
 
-                            <div className="flex gap-x-2">
-                                <p className=""> {experienceBullets}</p>
 
-                            </div>
-
+                            {experienceBullets && (
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: experienceBullets }}
+                                />
+                            )}
                         </>
                     )
 
@@ -260,8 +279,11 @@ export default function MinimalResume() {
             <div>
                 <h2 className="section_heading">Summary</h2>
                 <div className="h-[1px] w-full bg-black my-1"></div>
-                <p>{summaryText}</p>
-
+                {summaryText && (
+                    <div className="summary_text"
+                        dangerouslySetInnerHTML={{ __html: summaryText }}
+                    />
+                )}
             </div>
         );
 
@@ -284,6 +306,10 @@ export default function MinimalResume() {
                     const certificateLinkField = section.fields.find(field => field.id === 'certificate_link');
                     const certificateLink = certificateLinkField ? certificateLinkField.data : null; // Default value if field is not found
 
+                    const certificateBulletsField = section.fields.find(field => field.id === 'certificate_bullets');
+                    const certificateBullets = certificateBulletsField ? certificateBulletsField.data : null; // Default value if field is not found
+
+
                     return (
                         <>
                             <div className="flex gap-x-2">
@@ -291,6 +317,11 @@ export default function MinimalResume() {
                                 {certificateLink && <a href={certificateLink} target="_blank" className="block my-auto h-fit">
                                     <CiLink className="block my-auto h-fit" />
                                 </a>}
+                                {certificateBullets && (
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: certificateBullets }}
+                                    />
+                                )}
                             </div>
                         </>
                     )
@@ -348,8 +379,11 @@ export default function MinimalResume() {
                                 <p className="italic font-light">{achievementLocation}</p>
                             </div>
 
-                            <p className=""> {achievementBullets}</p>
-
+                            {achievementBullets && (
+                                <div
+                                    dangerouslySetInnerHTML={{ __html: achievementBullets }}
+                                />
+                            )}
                         </>
                     )
 
@@ -407,8 +441,11 @@ export default function MinimalResume() {
                                     <p className="italic font-light">{leadershipLocation}</p>
                                 </div>
 
-                                <p className=""> {leadershipBullets}</p>
-
+                                {leadershipBullets && (
+                                    <div
+                                        dangerouslySetInnerHTML={{ __html: leadershipBullets }}
+                                    />
+                                )}
                             </div>
                         )
                     })}
@@ -420,10 +457,10 @@ export default function MinimalResume() {
 
     return (
         <>
-            <section ref={ref} className="bg-white a4-paper minimal-resume-css">
+            <div ref={ref} className="bg-white a4-paper minimal-resume-css">
                 <div className="flex flex-col gap-y-8">
                     {
-                        resumeData.profile && profileSection(resumeData.profile)
+                        resumeData.profile && resumeData.profile.sections[0] && profileSection(resumeData.profile)
                     }
                     {
                         resumeData.education && educationSection(resumeData.education)
@@ -438,7 +475,7 @@ export default function MinimalResume() {
                         resumeData.experience && experienceSection(resumeData.experience)
                     }
                     {
-                        resumeData.summary && summarySection(resumeData.summary)
+                        resumeData.summary && resumeData.summary.sections[0] && summarySection(resumeData.summary)
                     }
                     {
                         resumeData.certificates && certificatesSection(resumeData.certificates)
@@ -454,7 +491,8 @@ export default function MinimalResume() {
                     }
 
                 </div>
-            </section>
+            </div>
+
             <button onClick={() => handlePrint(null, () => ref.current)}>
                 Download Resume
             </button >

@@ -1,0 +1,41 @@
+.ql-toolbar.ql-snow,
+.ql-container.ql-snow {
+    border: none !important;
+}
+
+.ql-toolbar.ql-snow {
+    border-bottom: 1px solid #454545 !important;
+}
+
+.quill {
+    background-color: black;
+
+    border: 1px solid #454545 !important;
+    border-radius: 5px !important;
+}
+
+
+.ql-align-justify {
+    text-align: justify
+}
+
+.ql-align-center {
+    text-align: center
+}
+
+.ql-align-left {
+    text-align: left
+}
+
+
+.ql-align-right {
+    text-align: right
+}
+
+.ql-snow .ql-stroke{
+    stroke: #808080 !important;
+}
+
+.quill button.ql-active .ql-stroke{
+    stroke: white !important;
+}
