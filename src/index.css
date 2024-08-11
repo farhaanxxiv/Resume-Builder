@@ -30,7 +30,7 @@
   box-sizing: border-box;
 
   /* Scale the font size relative to the width of the container */
-  font-size: 2vw;
+  font-size: 1rem;
   line-height: 1.5em;
 }
 

@@ -52,13 +52,13 @@
         ]
     },
     "skills": {
-        "multiple": false,
+        "multiple": true,
         "fields": [
             {
-                "id": "summary_text",
+                "id": "skills_skill",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Summary"
+                "placeholder": "Enter Skill"
             }
         ]
     },
@@ -66,10 +66,40 @@
         "multiple": true,
         "fields": [
             {
-                "id": "languages_language",
+                "id": "experience_company",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Language"
+                "placeholder": "Enter Company"
+            },
+            {
+                "id": "experience_position",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Position"
+            },
+            {
+                "id": "experience_location",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Location"
+            },
+            {
+                "id": "experience_from",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter From"
+            },
+            {
+                "id": "experience_to",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter To"
+            },
+            {
+                "id": "experience_bullets",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Bullets"
             }
         ]
     },
@@ -77,10 +107,46 @@
         "multiple": true,
         "fields": [
             {
-                "id": "languages_language",
+                "id": "leadership_place",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Language"
+                "placeholder": "Enter Title"
+            },
+            {
+                "id": "leadership_position",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Your Role"
+            },
+            {
+                "id": "leadership_location",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Location"
+            },
+            {
+                "id": "leadership_from",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter From"
+            },
+            {
+                "id": "leadership_to",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter To"
+            },
+            {
+                "id": "leadership_bullets",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Bullets"
+            },
+            {
+                "id": "leadership_link",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Link"
             }
         ]
     },
@@ -181,10 +247,22 @@
         "multiple": true,
         "fields": [
             {
-                "id": "languages_language",
+                "id": "certificate_issued_by",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Language"
+                "placeholder": "Certificate Issued By"
+            },
+            {
+                "id": "certificate_name",
+                "type": "text",
+                "data": "",
+                "placeholder": "Certificate Name"
+            },
+            {
+                "id": "certificate_link",
+                "type": "text",
+                "data": "",
+                "placeholder": "Certificate Link"
             }
         ]
     },
@@ -192,10 +270,46 @@
         "multiple": true,
         "fields": [
             {
-                "id": "languages_language",
+                "id": "achievement_place",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Language"
+                "placeholder": "Enter Title"
+            },
+            {
+                "id": "achievement_position",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Your Role"
+            },
+            {
+                "id": "achievement_location",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Location"
+            },
+            {
+                "id": "achievement_from",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter From"
+            },
+            {
+                "id": "achievement_to",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter To"
+            },
+            {
+                "id": "achievement_bullets",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Bullets"
+            },
+            {
+                "id": "achievement_link",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Link"
             }
         ]
     }
