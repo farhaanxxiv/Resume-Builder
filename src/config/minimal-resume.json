@@ -1,4 +1,45 @@
 {
+    "profile": {
+        "multiple": false,
+        "fields": [
+            {
+                "id": "profile_name",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Name"
+            },
+            {
+                "id": "profile_mobile",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Mobile"
+            },
+            {
+                "id": "profile_linkedin",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Linkedin"
+            },
+            {
+                "id": "profile_github",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter GitHub"
+            },
+            {
+                "id": "profile_location",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Location"
+            },
+            {
+                "id": "profile_email",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Email"
+            }
+        ]
+    },
     "summary": {
         "multiple": false,
         "fields": [
@@ -7,6 +48,39 @@
                 "type": "text",
                 "data": "",
                 "placeholder": "Enter Summary"
+            }
+        ]
+    },
+    "skills": {
+        "multiple": false,
+        "fields": [
+            {
+                "id": "summary_text",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Summary"
+            }
+        ]
+    },
+    "experience": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
+            }
+        ]
+    },
+    "leadership": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
             }
         ]
     },
@@ -93,6 +167,28 @@
         ]
     },
     "languages": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
+            }
+        ]
+    },
+    "certificates": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
+            }
+        ]
+    },
+    "achievements": {
         "multiple": true,
         "fields": [
             {

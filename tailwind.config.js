@@ -3,6 +3,16 @@ module.exports = {
   content: ["./src/**/*.{html,js,jsx}"], theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        '.all-children-black': {
+          '*': {
+            color: '#000',
+          },
+        },
+      });
+    },
+  ],
 }
 

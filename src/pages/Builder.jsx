@@ -4,123 +4,34 @@ import { saveAs } from "file-saver";
 import resumeFormat from '../config/minimal-resume.json'
 import { useResume } from "../context/ResumeContext";
 import ResumeUtils from "../utils/ResumeUtils";
+import ViewDoc from "../components/Resume/ViewDoc";
+import { useEffect, useState } from "react";
+import DocxViewer from "../components/Resume/ViewDoc";
+import generateResume from "../resumes/minimal";
+import MinimalResume from "./SampleResumes/MinimalResume";
 
 export default function Builder() {
 
     const { resumeData, setResumeData, totalSections, incrementSection, decrementSection } = useResume()
-
+    const [resumeBlob, setResumeBlob] = useState('')
     const resumeKeys = Object.keys(resumeFormat);
 
-    const doc = new Document({
-        sections: [
-            {
-                properties: {},
-                children: [
-                    new Paragraph({
-                        spacing: {
-                            after: 100, // Adds space before the paragraph (240 twips = 12pt)
-                        },
-                        children: [
-                            new TextRun({
-                                text: "Syed Farhaan Yousuf",
-                                bold: true,
-                                size: 48
-                            }),
-                        ],
-
-                        alignment: docx.AlignmentType.CENTER
-
-                    }),
-                    new Paragraph({
-                        children: [
-
-                            new TextRun({
-                                text: "+91 8143920170",
-                                size: 20
-                            }),
-
-                            new ExternalHyperlink({
-                                children: [
-                                    new TextRun({
-                                        text: "sfyousuf24@gmail.com",
-                                        style: "Hyperlink",
-                                        size: 20
-                                    }),
-                                ],
-                                link: "mailto:sfyousuf24@gmail.com",
-
-                            }),
-                            new TextRun({
-                                text: "Hyderabad, India",
-                                size: 20
-                            }),
-                            new ExternalHyperlink({
-                                children: [
-                                    new TextRun({
-                                        text: "github.com",
-                                        style: "Hyperlink",
-                                        size: 20
-                                    }),
-                                ],
-                                link: "https://github.com/farhaanxxiv",
-                            }),
-                        ],
-
-                        alignment: docx.AlignmentType.CENTER
-
-                    }),
-
-                    new Paragraph({
-
-                        children: [
-
-                            new TextRun({
-                                text: "SUMMARY",
-                                heading: docx.HeadingLevel.HEADING_1,
-                                size: 22,
-                                break: 2,
-
-                            }),
-                        ],
-                        border: {
-                            bottom: {
-                                color: "auto",
-                                space: 5,
-                                style: "single",
-                                size: 6,
-                            }
-
-                        },
-
-
-                    }),
-                    new Paragraph({
-                        spacing: {
-                            before: 100, // Adds space before the paragraph (240 twips = 12pt)
-                        },
-                        children: [
-
-                            new TextRun({
-                                text: "Seeking a challenging position where I could work and maintain large-scale applications where I can use my skills to the best. All the knowledge I have with Fullstack Development & DevOps could be used to its best where I tend to solve problems frequently. My clear understanding of the development process from Alpha and Beta stages to Production can be utilized.",
-                                size: 20,
-
-                            }),
-                        ],
-
-                    }),
-                ],
-            },
-
-        ],
-    });
-
     function downloadResume() {
+
+        const doc = generateResume(resumeData)
+
         Packer.toBlob(doc).then(blob => {
             console.log(blob);
             saveAs(blob, "example.docx");
             console.log("Document created successfully");
         });
     }
+
+    // useEffect(() => {
+    //     Packer.toBlob(doc).then(blob => {
+    //         setResumeBlob(blob)
+    //     });
+    // }, [resumeData])
 
     function addSection(section) {
         // Create a deep copy of the section schema to avoid modifying the original
@@ -228,7 +139,7 @@ export default function Builder() {
     };
     return (
         <section>
-            <div className="grid grid-cols-[20%_80%] ">
+            <div className="grid grid-cols-[20%_50%_30%] ">
                 <div className="border-r border-white pr-4">
                     <button onClick={() => downloadResume()}>Download Resume</button>
 
@@ -254,6 +165,9 @@ export default function Builder() {
                 </div>
                 <div>
                     {renderForm()}
+                </div>
+                <div>
+                    <MinimalResume />
                 </div>
             </div>
         </section>
