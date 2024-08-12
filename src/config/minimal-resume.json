@@ -103,50 +103,32 @@
             }
         ]
     },
-    "leadership": {
+    "projects": {
         "multiple": true,
         "fields": [
             {
-                "id": "leadership_place",
+                "id": "project_title",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Title"
+                "placeholder": "Project Title"
             },
             {
-                "id": "leadership_position",
+                "id": "project_link",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Your Role"
+                "placeholder": "Project Link"
             },
             {
-                "id": "leadership_location",
+                "id": "project_designation",
                 "type": "text",
                 "data": "",
-                "placeholder": "Enter Location"
+                "placeholder": "Project Designation"
             },
             {
-                "id": "leadership_from",
-                "type": "text",
-                "data": "",
-                "placeholder": "Enter From"
-            },
-            {
-                "id": "leadership_to",
-                "type": "text",
-                "data": "",
-                "placeholder": "Enter To"
-            },
-            {
-                "id": "leadership_bullets",
+                "id": "project_bullets",
                 "type": "custom",
                 "data": "",
-                "placeholder": "Enter Bullets"
-            },
-            {
-                "id": "leadership_link",
-                "type": "text",
-                "data": "",
-                "placeholder": "Enter Link"
+                "placeholder": "Info About Project"
             }
         ]
     },
@@ -203,46 +185,6 @@
             }
         ]
     },
-    "projects": {
-        "multiple": true,
-        "fields": [
-            {
-                "id": "project_title",
-                "type": "text",
-                "data": "",
-                "placeholder": "Project Title"
-            },
-            {
-                "id": "project_link",
-                "type": "text",
-                "data": "",
-                "placeholder": "Project Link"
-            },
-            {
-                "id": "project_designation",
-                "type": "text",
-                "data": "",
-                "placeholder": "Project Designation"
-            },
-            {
-                "id": "project_bullets",
-                "type": "custom",
-                "data": "",
-                "placeholder": "Info About Project"
-            }
-        ]
-    },
-    "languages": {
-        "multiple": true,
-        "fields": [
-            {
-                "id": "languages_language",
-                "type": "text",
-                "data": "",
-                "placeholder": "Enter Language"
-            }
-        ]
-    },
     "certificates": {
         "multiple": true,
         "fields": [
@@ -269,6 +211,64 @@
                 "type": "custom",
                 "data": "",
                 "placeholder": "Certificate Link"
+            }
+        ]
+    },
+    "languages": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "languages_language",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Language"
+            }
+        ]
+    },
+    "leadership": {
+        "multiple": true,
+        "fields": [
+            {
+                "id": "leadership_place",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Title"
+            },
+            {
+                "id": "leadership_position",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Your Role"
+            },
+            {
+                "id": "leadership_location",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Location"
+            },
+            {
+                "id": "leadership_from",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter From"
+            },
+            {
+                "id": "leadership_to",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter To"
+            },
+            {
+                "id": "leadership_bullets",
+                "type": "custom",
+                "data": "",
+                "placeholder": "Enter Bullets"
+            },
+            {
+                "id": "leadership_link",
+                "type": "text",
+                "data": "",
+                "placeholder": "Enter Link"
             }
         ]
     },

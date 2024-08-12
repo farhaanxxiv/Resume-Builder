@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { forwardRef, useEffect, useRef, useState } from "react"
 import generatePDF, { usePDF } from "react-to-pdf";
 import { useReactToPrint } from "react-to-print";
 import { useResume } from "../../context/ResumeContext";
@@ -7,13 +7,10 @@ import ResumeUtils from "../../utils/ResumeUtils";
 import '../../styles/quillStyles.css'
 
 
-export default function MinimalResume() {
-
+const MinimalResume = forwardRef(({ data }, downloadRef) => {
 
     const ref = useRef(null)
     const { resumeData } = useResume()
-
-
 
     const handlePrint = useReactToPrint({
         documentTitle: `Minimal Resume`,
@@ -21,6 +18,12 @@ export default function MinimalResume() {
         onAfterPrint: () => console.log("after printing..."),
         removeAfterPrint: true,
     });
+
+    const getFieldData = (section, fieldId) => {
+        const field = section.fields.find(field => field.id === fieldId);
+        return (field || field.data != '') ? field.data : null;
+    };
+
 
     const profileSection = (profileData) => {
         const profileNameField = profileData.sections[0].fields.find(field => field.id === 'profile_name');
@@ -59,7 +62,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Education</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
 
                 {education.sections.map((section, index) => {
                     // Define variables outside the JSX return statement
@@ -70,10 +73,10 @@ export default function MinimalResume() {
                     const educationCourse = educationCollegeCourse ? educationCollegeCourse.data : null; // Default value if field is not found
 
                     const educationFromField = section.fields.find(field => field.id === 'education_from');
-                    const educationFrom = educationFromField ? educationFromField.data : null; // Default value if field is not found
+                    const educationFrom = (educationFromField || educationFromField.data != '') ? educationFromField.data : null; // Default value if field is not found
 
                     const educationToField = section.fields.find(field => field.id === 'education_to');
-                    const educationTo = educationToField ? educationToField.data : null; // Default value if field is not found
+                    const educationTo = (educationToField || educationToField.data != '') ? educationToField.data : null; // Default value if field is not found
 
                     const educationCGPAField = section.fields.find(field => field.id === 'education_cgpa');
                     const educationCGPA = educationCGPAField ? educationCGPAField.data : null; // Default value if field is not found
@@ -119,7 +122,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Projects</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
 
                 {project.sections.map((section, index) => {
                     // Define variables outside the JSX return statement
@@ -167,7 +170,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Skills</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
                 <div className="flex flex-wrap">
 
                     {skills.sections.map((section, index) => {
@@ -197,7 +200,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Languages</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
                 <div className="flex flex-wrap">
 
                     {languages.sections.map((section, index) => {
@@ -225,7 +228,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Experience</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
 
                 {experience.sections.map((section, index) => {
                     // Define variables outside the JSX return statement
@@ -254,7 +257,7 @@ export default function MinimalResume() {
                                 <p className="italic font-light">{experiencePosition}</p>
                                 <p className="italic font-light">{experienceLocation}</p>
 
-                                <p className="italic font-light">({experienceFrom} - {experienceTo})</p>
+                                {(experienceFrom != null || experienceTo != null) && <p className="italic font-light">({experienceFrom} - {experienceTo})</p>}
                             </div>
 
 
@@ -278,7 +281,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Summary</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
                 {summaryText && (
                     <div className="summary_text"
                         dangerouslySetInnerHTML={{ __html: summaryText }}
@@ -293,7 +296,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Certificates</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
 
                 {certificates.sections.map((section, index) => {
                     // Define variables outside the JSX return statement
@@ -335,7 +338,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Achievements</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
 
                 {achievements.sections.map((section, index) => {
                     // Define variables outside the JSX return statement
@@ -396,7 +399,7 @@ export default function MinimalResume() {
         return (
             <div>
                 <h2 className="section_heading">Leadership</h2>
-                <div className="h-[1px] w-full bg-black my-1"></div>
+                <div className="h-[2px] w-full bg-black my-1"></div>
                 <div className="flex flex-col gap-y-3">
 
                     {leadership.sections.map((section, index) => {
@@ -457,7 +460,7 @@ export default function MinimalResume() {
 
     return (
         <>
-            <div ref={ref} className="bg-white a4-paper minimal-resume-css">
+            <div ref={downloadRef} className="bg-white a4-paper minimal-resume-css">
                 <div className="flex flex-col gap-y-8">
                     {
                         resumeData.profile && resumeData.profile.sections[0] && profileSection(resumeData.profile)
@@ -493,10 +496,10 @@ export default function MinimalResume() {
                 </div>
             </div>
 
-            <button onClick={() => handlePrint(null, () => ref.current)}>
-                Download Resume
-            </button >
+
         </>
     )
 
-}
+})
+
+export default MinimalResume

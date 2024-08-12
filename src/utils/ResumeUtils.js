@@ -35,7 +35,8 @@ const ResumeUtils = {
             return `behance.net/${match[1]}`;
         }
         return null; // Return null if it doesn't match
-    }
+    },
+    
 
 }
 

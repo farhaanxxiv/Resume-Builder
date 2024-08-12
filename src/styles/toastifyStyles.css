@@ -1,0 +1,9 @@
+.Toastify * {
+    color: black;
+    white-space: nowrap;
+}
+.Toastify__close-button{
+    width: fit-content;
+    height: fit-content;
+    margin: auto 0;
+}

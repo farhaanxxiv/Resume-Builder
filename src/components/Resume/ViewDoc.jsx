@@ -6,6 +6,7 @@ const ViewDoc = ({ docBlob }) => {
         return <div>No document available</div>;
     }
 
+    
     // Create a URL for the blob
     const docUrl = URL.createObjectURL(docBlob);
 

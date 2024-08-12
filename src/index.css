@@ -27,7 +27,7 @@
   }
 
   @page {
-    margin: 1em !important;
+    margin: 32pt !important;
   }
 }
 
@@ -40,9 +40,7 @@
   background-color: white;
   box-sizing: border-box;
 
-  /* Scale the font size relative to the width of the container */
   font-size: 1rem;
-  line-height: 1.5em;
 }
 
 
@@ -64,12 +62,12 @@ body {
 }
 
 section {
-  padding: 4rem 7%;
+  padding: 4rem 4%;
 }
 
 @media only screen and (max-width: 600px) {
   section {
-    padding: 2rem 2%;
+    padding: 2rem 7%;
   }
 }
 
@@ -106,4 +104,8 @@ input {
   border: 1px solid rgb(88, 88, 88);
   padding: 5px 10px;
   border-radius: 4px;
+}
+
+label {
+  font-size: 12px;
 }
