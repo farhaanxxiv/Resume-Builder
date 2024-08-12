@@ -2,8 +2,19 @@
     color: black;
     white-space: nowrap;
 }
-.Toastify__close-button{
+
+.Toastify__close-button {
     width: fit-content;
     height: fit-content;
     margin: auto 0;
+}
+
+@media only screen and (max-width: 600px) {
+    .Toastify__toast-container {
+        width: fit-content !important;
+        right: 0 !important;
+        left: auto !important;
+        bottom: 0 !important;
+        top: auto !important;
+    }
 }

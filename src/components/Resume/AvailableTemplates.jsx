@@ -5,6 +5,5 @@ export default function AvailableTemplates() {
             <img className="w-full block mx-auto" src="/assets/images/resume-minimal.png" />
             <p className="mt-12">*We are working on adding more Resume Templates</p>
         </div>
-
     )
 }

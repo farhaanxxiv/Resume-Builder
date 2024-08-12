@@ -43,7 +43,7 @@ export default function MyResumes() {
                     :
                     <div className="mt-12">
                         <button onClick={() => console.log(';sa')} className="white w-fit font-medium">Create New Resume&nbsp;&nbsp;&nbsp;+</button>
-                        <div className="grid grid-cols-4 gap-4 mt-12">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
 
                             {
                                 resumes.length != 0 ?
@@ -53,7 +53,7 @@ export default function MyResumes() {
                                             <Link to={`/app/builder/${resume.id}`} >
 
                                                 <div className="aspect-[1/1.414] w-full h-full rounded hover:bg-[#252525] bg-[#1c1c1c] relative">
-                                                    <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">{resume.title}</p>
+                                                    <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center">{resume.title}</p>
                                                     <p className="absolute bottom-2 left-2 text-xs">Created On : {DateUtils.DDMMYYYY(resume.created_on)}</p>
                                                 </div>
                                             </Link>
