@@ -39,10 +39,14 @@ export default function Home() {
     return (
         <>
             <section>
-                <h1 className="font-semibold text-center text-5xl">Build Your Resume</h1>
-                <h1 className="mt-4 font-medium text-center text-2xl bg-[white] text-black w-fit mx-auto px-4 shadow-[0px_0px_30px_#888888] rounded">For Free</h1>
-
+                <h1 className="font-semibold text-center text-5xl relative w-fit mx-auto">
+                    Resume Builder
+                    <div className="bg-white text-black text-sm font-bold px-6 -rotate-[10deg] absolute -bottom-3 -right-8">
+                        FREE
+                    </div>
+                </h1>
             </section>
+
             {
                 loading ? <p className="text-center">Fetching Auth...</p>
                     :
