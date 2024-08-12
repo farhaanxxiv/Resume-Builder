@@ -17,6 +17,8 @@ export default function MyResumes() {
         } else {
 
         }
+        fetchAllResume()
+
     }
 
     async function fetchAllResume() {
@@ -42,7 +44,7 @@ export default function MyResumes() {
                     <p>Loading</p>
                     :
                     <div className="mt-12">
-                        <button onClick={() => console.log(';sa')} className="white w-fit font-medium">Create New Resume&nbsp;&nbsp;&nbsp;+</button>
+                        <button onClick={() => createResume()} className="white w-fit font-medium">Create New Resume&nbsp;&nbsp;&nbsp;+</button>
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-12">
 
                             {
