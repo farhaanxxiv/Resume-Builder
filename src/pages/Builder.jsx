@@ -87,8 +87,8 @@ export default function Builder() {
                     <RenderSections />
                 </div>
                 <div className="hidden lg:block">
-                    <AvailableTemplates />
-
+                    {/* <AvailableTemplates /> */}
+                    <MinimalResume resumeData={resumeData} />
                 </div>
                 <FloatingBar resumeid={id} />
 

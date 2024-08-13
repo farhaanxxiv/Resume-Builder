@@ -14,18 +14,16 @@ function App() {
   return (
     <ThemeProvider>
       <AuthProvider>
-        <ResumeProvider>
-          <ToastContainer />
-          <BrowserRouter>
-            <Routes>
-              <Route element={<MinimalResume />} path='/minimal-resume' />
-              <Route element={<Builder />} path='/app/builder/:id' />
-              <Route element={<MyResumes />} path='/app' />
-              <Route element={<Home />} path='/' />
+        <ToastContainer />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<MinimalResume />} path='/minimal-resume' />
+            <Route element={<Builder />} path='/app/builder/:id' />
+            <Route element={<MyResumes />} path='/app' />
+            <Route element={<Home />} path='/' />
 
-            </Routes>
-          </BrowserRouter>
-        </ResumeProvider>
+          </Routes>
+        </BrowserRouter>
       </AuthProvider>
     </ThemeProvider>
   );

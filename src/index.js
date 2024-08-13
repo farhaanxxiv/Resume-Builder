@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { ResumeProvider } from './context/ResumeContext';
 
 const firebaseConfig = JSON.parse(process.env.REACT_APP_FIREBASE_CONFIG)
 
@@ -22,8 +23,11 @@ export const db = getFirestore(app);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ResumeProvider>
+      <App />
+    </ResumeProvider>
   </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function
