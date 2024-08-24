@@ -9,7 +9,7 @@ on:
 
 env:
   REACT_APP_FIREBASE_CONFIG: ${{ secrets.REACT_APP_FIREBASE_CONFIG }}
-  
+  REACT_APP_SERVER_URL: ${{ secrets.REACT_APP_SERVER_URL }}
 jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
